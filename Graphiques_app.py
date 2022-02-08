@@ -22,7 +22,7 @@ from streamlit_folium import folium_static
 st.set_page_config(layout="wide")
 
 #Pour mettre le logo MatchMarket dans la sidebar (console verticale de gauche):
-st.sidebar.image("https://github.com/FlorianMimolle/matchmarket/blob/main/Streamlit/mjyLok-f_400x400.png?raw=true")
+st.sidebar.image("https://github.com/FlorianMimolle/MatchMarket-final/blob/master/mjyLok-f_400x400.png?raw=true")
 
 #Met les options cochables dans la sidebar pour afficher le tableau de donné ainsi que le menu soit graphique, soit cluster:
 table = st.sidebar.checkbox("Afficher le Tableau de données ")
@@ -31,7 +31,7 @@ page = st.sidebar.radio("Page",("Graphique","Cluster"))
 ###################################################################GRAPHIQUE#####################################################################  
 if page == "Graphique":
     #Liens du fichier :
-    link = 'https://github.com/FlorianMimolle/matchmarket/raw/main/Streamlit/df.csv.zip'
+    link = 'https://github.com/FlorianMimolle/MatchMarket-final/raw/master/df.csv.zip'
     df = pd.read_csv(link,compression="zip",low_memory=False)
 
     #Pour sélectionner quels type de campagne on souhaite voir (dans la sidebar): 
@@ -60,13 +60,13 @@ if page == "Graphique":
     campaign_wc = df_result["type_Campaign"].iloc[0]
     if len(df_result["type_Campaign"].unique())==1:
         if campaign_wc =="Cosmetique":
-            url = requests.get("https://github.com/FlorianMimolle/matchmarket/blob/main/Streamlit/black-white-silhouette-perfume-bottle-600w-1037202859.png?raw=true")
+            url = requests.get("https://github.com/FlorianMimolle/MatchMarket-final/blob/master/black-white-silhouette-perfume-bottle-600w-1037202859.png?raw=true")
         elif campaign_wc =="Deco":
-            url = requests.get("https://github.com/FlorianMimolle/matchmarket/blob/main/Streamlit/Sans%20titre.png?raw=true")
+            url = requests.get("https://github.com/FlorianMimolle/MatchMarket-final/blob/master/Sans_titre.png?raw=true")
         else: 
-            url = requests.get("https://github.com/FlorianMimolle/matchmarket/blob/main/Streamlit/black-dress-clipart.jpg?raw=true")
+            url = requests.get("https://github.com/FlorianMimolle/MatchMarket-final/blob/master/black-dress-clipart.jpg?raw=true")
     else:
-        url = requests.get("https://github.com/FlorianMimolle/matchmarket/blob/main/Streamlit/black-dress-clipart.jpg?raw=true")
+        url = requests.get("https://github.com/FlorianMimolle/MatchMarket-final/blob/master/black-dress-clipart.jpg?raw=true")
     
     def couleur(*args, **kwargs):
         import random
@@ -340,11 +340,11 @@ if page == "Cluster":
     #Puis défini le link à prendre en fonction du choix : 
     Type_Campaign = st.sidebar.radio("Sélectionner le Type de Campagne à clusteriser :",("Mode","Déco","Cosmétique"))
     if Type_Campaign == "Mode":
-        link = "https://raw.githubusercontent.com/FlorianMimolle/matchmarket/main/Streamlit/Fashion.csv"
+        link = "https://raw.githubusercontent.com/FlorianMimolle/MatchMarket-final/master/Fashion.csv"
     if Type_Campaign == "Déco":
-        link = "https://raw.githubusercontent.com/FlorianMimolle/matchmarket/main/Streamlit/Deco.csv"
+        link = "https://raw.githubusercontent.com/FlorianMimolle/MatchMarket-final/master/Deco.csv"
     if Type_Campaign == "Cosmétique":
-        link = "https://raw.githubusercontent.com/FlorianMimolle/matchmarket/main/Streamlit/Cosmetique.csv" 
+        link = "https://raw.githubusercontent.com/FlorianMimolle/MatchMarket-final/master/Cosmetique.csv" 
     df = pd.read_csv(link,low_memory=False) #Puis défini le df en fonction du link choisi
     
     #Compte le nombre de cluster différent dans la table sélectionnée (car le nombre de cluster peut varier entre les tables) et les mets en format liste:

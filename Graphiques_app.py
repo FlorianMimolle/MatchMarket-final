@@ -197,7 +197,7 @@ if page == "Graphique":
         postal_df = pd.merge(client_postal_df,vote_postal_df,left_on = "zipcode",right_on = "zipcode")
         postal_df = postal_df.reset_index() #On sort les index zipcode pour que cela devienne une colonne
         postal_df.columns = ["zipcode","nb_Personne","Coordonnées","Age","%Like"] #On renomme les colonnes
-        postal_df["color"] = postal_df["%Like"].apply(lambda x : "#f24343" if x < 30 #On attribue la couleur pour Like 
+        postal_df["color"] = postal_df["%Like"].apply(lambda x : "#ff5789" if x < 30 #On attribue la couleur pour Like 
                                                             else "#FFCF00" if x < 70
                                                             else "#27d830")
         postal_df = postal_df[postal_df["Coordonnées"].isnull() == False] #On supprime les lignes où le zipcode n'a pas été trouvé
@@ -402,7 +402,7 @@ if page == "Cluster":
                                     histnorm = "", #Pour éviter la normalisation quand histbar
                                     show_hist=Normalise, #Cache les histogrammes (pour n'afficher que la courbe, sinon c'est vite illisible)
                                     show_rug=False, #Cache la règlette affichée par défaut dans plotly mais qui n'apporte rien
-                                    colors = ["gold","deeppink","orange","lemonchiffon"]) #Liste de couleur pour identifier chacun des clusters
+                                    colors = ["gold","deeppink","black","orange","darkmagenta","lawngreen","lightsalmon","mediumorchid","limegreen","royalblue"]) #Liste de couleur pour identifier chacun des clusters
             fig.update_layout(title_text="Distribution de l'Age", #Titre du graphique
                               font = dict(size = 14),#Pour mettre une police un peu plus grosse
                               width = 470,

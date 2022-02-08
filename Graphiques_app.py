@@ -84,7 +84,7 @@ if page == "Graphique":
                           max_words=30, 
                           collocations=False, 
                           contour_color='#FFCF00',
-                          contour_width = 0.00001,
+                          contour_width = 2,
                           min_font_size = 7,
                           prefer_horizontal = 1,
                           mask = mask).generate(text_new)
@@ -276,12 +276,12 @@ if page == "Graphique":
                        marker=dict(color = 'deeppink'))])  # choisir la couleur rose                          
         # personnaliser le graphique
         fig.update_layout(barmode='group', # mode de disposition des barres (côte à côte)
-                            title_text=f'Nombre de vote pour la campagne {Type_Campaign}', # titre de graphique
-                            font = dict(size = 16), # taille du police
-                            xaxis_title = "Nombre de vote", # titre de l'axe x
-                            yaxis_title = "Matières",# titre de l'axe y
-                            width=500,
-                            height=500) 
+                            title_text=f'Nombre de votes pour les campagnes de type {Type_Campaign}', # titre de graphique
+                            font = dict(size = 14), # taille du police
+                            xaxis_title = "Nombre de votes", # titre de l'axe x
+                            yaxis_title = "Matière",# titre de l'axe y
+                            width = 900,
+                            height = 500) 
         st.plotly_chart(fig)  #afficher le graphique        
 
     #######################color########################### :    
@@ -304,12 +304,12 @@ if page == "Graphique":
                 go.Bar(name= 'Dislike-vif', y=df1.index.get_level_values(0), x = df1['vif_dislike'], orientation='h',marker=dict(color = 'deeppink'))#pour mettre la couleur deeppink pour les bars dislike-vif
             ])                              
             fig.update_layout(barmode='group',
-                              title_text="Nombre de vote like, dislike selon les couleurs et  par campagne ",# titre du graphique
-                              font = dict(size = 16),
-                              xaxis_title = "Nombre de vote",# titre pour x
+                              title_text="Nombre de votes like, dislike selon les couleurs<br>et par campagne ",# titre du graphique
+                              font = dict(size = 14),
+                              xaxis_title = "Nombre de votes",# titre pour x
                               yaxis_title = "campagne_id ",# titre pour y
-                              width=700,
-                              height=550)
+                              width=500,
+                              height=500)
             st.plotly_chart(fig)  
         with col2:
             df_result['color'] = df_result['color'].apply(lambda x: x.replace('[','')).apply(lambda x: x.replace(']','')).apply(lambda x: x.replace("'",''))# dans la table résult les couleurs apparaitre sous forme de list exemple [noir], on vas donc enlever les crochés pour que ca  devient noir
@@ -327,12 +327,12 @@ if page == "Graphique":
                 go.Bar(name= 'Dislike', y=df1.index.get_level_values(0), x = df1['product name_dislike'], orientation='h',marker=dict(color = 'deeppink'))
             ])                              
             fig.update_layout(barmode='group',
-                              title_text="Top 10 des couleurs que les plus présenté",
-                              font = dict(size = 16),
-                              xaxis_title = "Nombre de vote",
-                              yaxis_title = "color ",
-                              width=700,
-                              height=550)
+                              title_text="Top 10 des couleurs les plus présentes",
+                              font = dict(size = 14),
+                              xaxis_title = "Nombre de votes",
+                              yaxis_title = "couleur ",
+                              width=500,
+                              height=500)
             st.plotly_chart(fig)
 
 ####################################################################CLUSTERS#####################################################################  
@@ -400,24 +400,25 @@ if page == "Cluster":
                                     show_rug=False, #Cache la règlette affichée par défaut dans plotly mais qui n'apporte rien
                                     colors = ["gold","deeppink","orange","lemonchiffon"]) #Liste de couleur pour identifier chacun des clusters
             fig.update_layout(title_text="Distribution de l'Age", #Titre du graphique
-                              font = dict(size = 16),#Pour mettre une police un peu plus grosse
-                              width = 500,
-                              yaxis_title = "Nombre de client normalisé", #Label de y
+                              font = dict(size = 14),#Pour mettre une police un peu plus grosse
+                              width = 470,
+                              height = 400,
+                              yaxis_title = "Nombre de clients", #Label de y
                               xaxis_title = "Âge") #Label de x
             st.plotly_chart(fig) 
         ##############GRAPHIQUE POURCENTAGE DE MILIEU URBAIN :
         with col3:
-            labels = ["Supérieur à 5000 hab","Inférieur à 5000 hab"] #Label pour la légende
+            labels = ["Supérieure à 5000 hab","Inférieure à 5000 hab"] #Label pour la légende
             values = np.array([round(df_result["Urbain"].mean()*100,2),100-round(df_result["Urbain"].mean()*100,2)]) #Créer un array avec le% de personnes urbains et le % de personnes rurales
             fig = go.Figure(data=[go.Pie(labels=labels, #Créer le camembert avec la legénde
                                      values=values, #les deux % (ruraux et urbain)
                                      hole=.5, #Pour faire un donut plutôt qu'un camembert
                                      marker_colors=["deeppink","gold"], #Met les deux couleurs Urbain/Rural
                                      pull=[0.2, 0])], #pour exploder (décaller) la part Urbain 
-                            layout={"title":"Pourcentage de personnes<br>venant de villes suppérieur à 5000 hab"}) #Titre du graphique
-            fig.update_layout(font = dict(size = 16),
-                              width = 500,
-                              legend_title = "Ville") #Titre du bloc légende
+                            layout={"title":"Provenance des Praedicters"}) #Titre du graphique
+            fig.update_layout(font = dict(size = 14),
+                              width = 470,
+                              legend_title = "Population de la commune") #Titre du bloc légende
             st.plotly_chart(fig)
         
         ##############GRAPHES STYLES PREF EN FONCTION DE LA TRANCHE D'AGE DES USERS :
@@ -449,8 +450,8 @@ if page == "Cluster":
                               yaxis_title = "Tranches d'âges des utilisateurs",
                               legend_title = "Préférence stylistique", #titre de la légende 
                               height = 400, #dimensions du graphe
-                              width = 1000,
-                              font = dict(size = 16)) #taille de la police
+                              width = 900,
+                              font = dict(size = 14)) #taille de la police
                 st.plotly_chart(fig)
             elif pref_for_ages == "Marques de Beauté préférées" : #Condition : si l'utilisateur a sélectionné les marques de beauté (variable pref_for_ages précédemment définie par le bouton radio)
                 df_agescut = df_agescut.groupby('Age')[['access_brand', 'mass_brand', 'premium_brand', 'hdg_brand', 'luxe_brand', 'bio_brand']].agg('sum') #Regroupement par ages
@@ -466,13 +467,13 @@ if page == "Cluster":
                              x = ['Access', 'Mass', 'Premium', 'Haut de Gamme', 'Luxe', 'Bio'], 
                              orientation='h', 
                              color_discrete_sequence= px.colors.sequential.Plasma_r)
-                fig.update_layout(title = "Catégories de marques préférées en fonction de la tranche d'âge des utilisateurs", #Ajout du titre du graphe
+                fig.update_layout(title = "Gamme de marques préférées en fonction de la tranche d'âges des utilisateurs", #Ajout du titre du graphe
                               xaxis_title = "Pourcentage d'utilisateurs", #titre des axes
-                              yaxis_title = "Tranches d'âges  des utilisateurs",
+                              yaxis_title = "Tranche d'âges  des utilisateurs",
                               legend_title = "Catégories préférencielles",  #titre de la légende
                               height = 400, #dimensions du graphe
-                              width = 1000,
-                              font = dict(size = 16)) #taille de la police
+                              width = 900,
+                              font = dict(size = 14)) #taille de la police
                 st.plotly_chart(fig)
             else : #Condition : si l'utilisateur a sélectionné les marques de mode (variable pref_for_ages précédemment définie par le bouton radio)
                 df_agescut = df_agescut.groupby('Age')[['access_mode', 'mass_mode', 'premium_mode', 'hdg_mode',"prestige_mode", 'luxe_mode', "vintage_mode","eco_responsable_mode"]].agg('sum')
@@ -488,13 +489,13 @@ if page == "Cluster":
                              x = ["Access","Mass","Premium","Haut de Gamme","Prestige","Luxe","Vintage","Eco Responsable"], 
                              orientation='h', 
                              color_discrete_sequence= px.colors.sequential.Plasma_r)
-                fig.update_layout(title = "Catégories de marques préférées en fonction de la tranche d'âge des utilisateurs", #Ajout du titre du graphe
+                fig.update_layout(title = "Gamme de marques préférées en fonction de la tranche d'âge des utilisateurs", #Ajout du titre du graphe
                               xaxis_title = "Pourcentage d'utilisateurs", #titre des axes
                               yaxis_title = "Tranches d'âges  des utilisateurs",
                               legend_title = "Catégories préférencielles", #titre de la légende 
                               height = 400, #dimensions du graphe
-                              width = 1000,
-                              font = dict(size = 16)) #taille de la police
+                              width = 900,
+                              font = dict(size = 14)) #taille de la police
                 st.plotly_chart(fig)
         
         col1,col2,col3 = st.columns(3)
@@ -516,12 +517,12 @@ if page == "Cluster":
                                    marker_color = f"{couleur[cluster_i]}")) #Applique la couleur à chacun des clusters
             fig = go.Figure(data=data) # on regroupe tous les graphiques en bar créé par la boucle
             fig.update_xaxes(tickangle=-90) #Pour mettre les labels x à la verticale
-            fig.update_layout(title = "Nombre de Sélection moyen par catégorie", #Titre du graphique
+            fig.update_layout(title = "Nombre de Sélection moyen<br>par catégorie", #Titre du graphique
                               yaxis_title = "Nombre de Sélection moyen", #Label y
                               legend_title = "Cluster", #Titre du bloc légende
                               height = 550, #Hauteur du graphique (afin que les trois graphiques en bar de la page soient homogènes)
-                              width = 430,
-                              font = dict(size = 16)) #Pour augmenter la taille de la police
+                              width = 400,
+                              font = dict(size = 14)) #Pour augmenter la taille de la police
             st.plotly_chart(fig) #Pour afficher le graphique
         ##############GRAPHIQUE MARQUES DE BEAUTE PREFEREES:  
         with col2:
@@ -538,12 +539,12 @@ if page == "Cluster":
                 data.append(go.Bar(name=f'cluster {df_brand.iloc[cluster_i,0]}', x=categories, y=liste,marker_color = f"{couleur[cluster_i]}")) #On créer différents graphiques en bar, name : sert à identifier les différents clusters
             fig = go.Figure(data=data) # on regroupe tous les graphiques en bar créé par la boucle
             fig.update_xaxes(tickangle=-90) #Pour mettre les labels x à la verticale
-            fig.update_layout(title = "Nombre de Sélection moyen par Préférence de<br>Marque de Beauté", #Titre du graphique
+            fig.update_layout(title = "Nombre de Sélection moyen<br>par Préférence de Marque de Beauté", #Titre du graphique
                               yaxis_title = "Nombre de Sélection moyen", #Label y
                               legend_title = "Cluster", #Titre du bloc légende
                               height = 425, #Hauteur du graphique (afin que les trois graphiques en bar de la page soient homogènes)
-                              width = 430,
-                              font = dict(size = 16)) #Pour augmenter la taille de la police
+                              width = 400,
+                              font = dict(size = 14)) #Pour augmenter la taille de la police
             st.plotly_chart(fig) #Pour afficher le graphique
         ##############GRAPHIQUE MARQUES DE MODE PREFEREES:     
         with col3:
@@ -560,11 +561,11 @@ if page == "Cluster":
                 data.append(go.Bar(name=f'cluster {df_mode.iloc[cluster,0]}', x=categories, y=liste,marker_color = f"{couleur[cluster]}")) #On créer différents graphiques en bar, name : sert à identifier les différents clusters
             fig = go.Figure(data=data) # on regroupe tous les graphiques en bar créé par la boucle
             fig.update_xaxes(tickangle=-90) #Pour mettre les labels x à la verticale
-            fig.update_layout(title = "Nombre de Sélection moyen par Préférence de<br>Marque de Mode", #Titre du graphique
+            fig.update_layout(title = "Nombre de Sélection moyen<br>par Préférence de Marque de Mode", #Titre du graphique
                               yaxis_title = "Nombre de Sélection moyen", #Label y
                               legend_title = "Cluster", #Titre du bloc légende
-                              width = 430,
-                              font = dict(size = 16)) #Pour augmenter la taille de la police
+                              width = 400,
+                              font = dict(size = 14)) #Pour augmenter la taille de la police
             st.plotly_chart(fig) #Pour afficher le graphique
             
         #Ecris le titre 2 de la page : 
@@ -597,9 +598,10 @@ if page == "Cluster":
                         color_discrete_map={'Like': 'gold','Dislike': 'deeppink'},
                         labels={"x": "critère ciblé", #On supprime le label de l'axe x car cela est déjà identifié par le type de catégories
                                 "y": "Nombre de vote", #Label de l'axe y
-                                "color":"Type de vote"}, #Titre du bloc de legende
+                                "color":"Type de votes"}, #Titre du bloc de legende
                         title = "nombre de Like/Dislike d'articles ayant le critère ciblé") #Titre du graphique
-            fig.update_layout(font = dict(size = 16)) #Augmente la taille de la police
+            fig.update_layout(font = dict(size = 14),
+                             width = 550) #Augmente la taille de la police
             st.plotly_chart(fig) #Pour afficher le graphique
             
         ##############GRAPHIQUE LIKE/DISLIKE DES PRIX:  
@@ -622,8 +624,9 @@ if page == "Cluster":
                                 "y": "", #On supprime le label de l'axe y car cela est déjà identifié par le type de catégories
                                 "color":"Type de vote"}, #Titre du bloc de legende
                         title = 'Prix moyen des produits Likés vs Dislikés', #Titre du graphique
+                        width = 550,
                         height=250) #Hauteur du graphique pour qu'il soit pas trop large
-            fig.update_layout(font = dict(size = 16)) #Augmente la taille de la police
+            fig.update_layout(font = dict(size = 14)) #Augmente la taille de la police
             st.plotly_chart(fig) #Pour afficher le graphique
             
         ######################### GRAPHIQUE PERSONNALISABLE :
@@ -647,6 +650,7 @@ if page == "Cluster":
                              title="Corrélation", 
                              color = "cluster",
                              color_discrete_sequence= px.colors.sequential.Plasma_r)
+            fig.update_layout(width = 550)
             st.plotly_chart(fig)
         with col2:
             fig = px.scatter(df_perso, 
@@ -655,22 +659,5 @@ if page == "Cluster":
                              title="Corrélation", 
                              color = "cluster",
                              color_discrete_sequence= px.colors.sequential.Plasma_r)
+            fig.update_layout(width = 550)
             st.plotly_chart(fig)
-        
-        
-        
-
-
-        
-            
-            
-        
-        
-
-            
-            
-        
-        
-        
-        
-        

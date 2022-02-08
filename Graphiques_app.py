@@ -281,7 +281,7 @@ if page == "Graphique":
                             font = dict(size = 14), # taille du police
                             xaxis_title = "Nombre de votes", # titre de l'axe x
                             yaxis_title = "Matière",# titre de l'axe y
-                            plot_bgcolor='rgb(245,245,245)',
+                            plot_bgcolor='rgb(245,245,245)', #Pour modifier la couleur du background
                             width = 900,
                             height = 500) 
         st.plotly_chart(fig)  #afficher le graphique        
@@ -310,6 +310,7 @@ if page == "Graphique":
                               font = dict(size = 14),
                               xaxis_title = "Nombre de votes",# titre pour x
                               yaxis_title = "campagne_id ",# titre pour y
+                              plot_bgcolor='rgb(245,245,245)', #Pour modifier la couleur du background
                               width=500,
                               height=500)
             st.plotly_chart(fig)  
@@ -333,6 +334,7 @@ if page == "Graphique":
                               font = dict(size = 14),
                               xaxis_title = "Nombre de votes",
                               yaxis_title = "couleur ",
+                              plot_bgcolor='rgb(245,245,245)', #Pour modifier la couleur du background
                               width=500,
                               height=500)
             st.plotly_chart(fig)
@@ -405,6 +407,7 @@ if page == "Cluster":
                               font = dict(size = 14),#Pour mettre une police un peu plus grosse
                               width = 470,
                               height = 400,
+                              plot_bgcolor='rgb(245,245,245)', #Pour modifier la couleur du background
                               yaxis_title = "Nombre de clients", #Label de y
                               xaxis_title = "Âge") #Label de x
             st.plotly_chart(fig) 
@@ -453,6 +456,7 @@ if page == "Cluster":
                               legend_title = "Préférence stylistique", #titre de la légende 
                               height = 400, #dimensions du graphe
                               width = 900,
+                              plot_bgcolor='rgb(245,245,245)', #Pour modifier la couleur du background
                               font = dict(size = 14)) #taille de la police
                 st.plotly_chart(fig)
             elif pref_for_ages == "Marques de Beauté préférées" : #Condition : si l'utilisateur a sélectionné les marques de beauté (variable pref_for_ages précédemment définie par le bouton radio)
@@ -473,6 +477,7 @@ if page == "Cluster":
                               xaxis_title = "Pourcentage d'utilisateurs", #titre des axes
                               yaxis_title = "Tranche d'âges  des utilisateurs",
                               legend_title = "Catégories préférencielles",  #titre de la légende
+                              plot_bgcolor='rgb(245,245,245)', #Pour modifier la couleur du background
                               height = 400, #dimensions du graphe
                               width = 900,
                               font = dict(size = 14)) #taille de la police
@@ -495,6 +500,7 @@ if page == "Cluster":
                               xaxis_title = "Pourcentage d'utilisateurs", #titre des axes
                               yaxis_title = "Tranches d'âges  des utilisateurs",
                               legend_title = "Catégories préférencielles", #titre de la légende 
+                              plot_bgcolor='rgb(245,245,245)', #Pour modifier la couleur du background
                               height = 400, #dimensions du graphe
                               width = 900,
                               font = dict(size = 14)) #taille de la police
@@ -522,6 +528,7 @@ if page == "Cluster":
             fig.update_layout(title = "Nombre de Sélection moyen<br>par catégorie", #Titre du graphique
                               yaxis_title = "Nombre de Sélection moyen", #Label y
                               legend_title = "Cluster", #Titre du bloc légende
+                              plot_bgcolor='rgb(245,245,245)', #Pour modifier la couleur du background
                               height = 550, #Hauteur du graphique (afin que les trois graphiques en bar de la page soient homogènes)
                               width = 400,
                               font = dict(size = 14)) #Pour augmenter la taille de la police
@@ -544,6 +551,7 @@ if page == "Cluster":
             fig.update_layout(title = "Nombre de Sélection moyen<br>par Préférence de Marque de Beauté", #Titre du graphique
                               yaxis_title = "Nombre de Sélection moyen", #Label y
                               legend_title = "Cluster", #Titre du bloc légende
+                              plot_bgcolor='rgb(245,245,245)', #Pour modifier la couleur du background
                               height = 425, #Hauteur du graphique (afin que les trois graphiques en bar de la page soient homogènes)
                               width = 400,
                               font = dict(size = 14)) #Pour augmenter la taille de la police
@@ -566,6 +574,7 @@ if page == "Cluster":
             fig.update_layout(title = "Nombre de Sélection moyen<br>par Préférence de Marque de Mode", #Titre du graphique
                               yaxis_title = "Nombre de Sélection moyen", #Label y
                               legend_title = "Cluster", #Titre du bloc légende
+                              plot_bgcolor='rgb(245,245,245)', #Pour modifier la couleur du background
                               width = 400,
                               font = dict(size = 14)) #Pour augmenter la taille de la police
             st.plotly_chart(fig) #Pour afficher le graphique
@@ -603,7 +612,8 @@ if page == "Cluster":
                                 "color":"Type de votes"}, #Titre du bloc de legende
                         title = "nombre de Like/Dislike d'articles ayant le critère ciblé") #Titre du graphique
             fig.update_layout(font = dict(size = 14),
-                             width = 550) #Augmente la taille de la police
+                              plot_bgcolor='rgb(245,245,245)', #Pour modifier la couleur du background
+                              width = 550) #Augmente la taille de la police
             st.plotly_chart(fig) #Pour afficher le graphique
             
         ##############GRAPHIQUE LIKE/DISLIKE DES PRIX:  
@@ -626,6 +636,7 @@ if page == "Cluster":
                                 "y": "", #On supprime le label de l'axe y car cela est déjà identifié par le type de catégories
                                 "color":"Type de vote"}, #Titre du bloc de legende
                         title = 'Prix moyen des produits Likés vs Dislikés', #Titre du graphique
+                        plot_bgcolor='rgb(245,245,245)', #Pour modifier la couleur du background
                         width = 550,
                         height=250) #Hauteur du graphique pour qu'il soit pas trop large
             fig.update_layout(font = dict(size = 14)) #Augmente la taille de la police
@@ -652,7 +663,8 @@ if page == "Cluster":
                              title="Corrélation", 
                              color = "cluster",
                              color_discrete_sequence= px.colors.sequential.Plasma_r)
-            fig.update_layout(width = 550)
+            fig.update_layout(width = 550,
+                             plot_bgcolor='rgb(245,245,245)', #Pour modifier la couleur du background)
             st.plotly_chart(fig)
         with col2:
             fig = px.scatter(df_perso, 
@@ -661,5 +673,6 @@ if page == "Cluster":
                              title="Corrélation", 
                              color = "cluster",
                              color_discrete_sequence= px.colors.sequential.Plasma_r)
-            fig.update_layout(width = 550)
+            fig.update_layout(width = 550,
+                             plot_bgcolor='rgb(245,245,245)', #Pour modifier la couleur du background)
             st.plotly_chart(fig)

@@ -664,7 +664,7 @@ if page == "Cluster":
                              color = "cluster",
                              color_discrete_sequence= px.colors.sequential.Plasma_r)
             fig.update_layout(width = 550,
-                             plot_bgcolor='rgb(245,245,245)', #Pour modifier la couleur du background)
+                             plot_bgcolor='rgb(245,245,245)') #Pour modifier la couleur du background)
             st.plotly_chart(fig)
         with col2:
             fig = px.scatter(df_perso, 
@@ -674,5 +674,5 @@ if page == "Cluster":
                              color = "cluster",
                              color_discrete_sequence= px.colors.sequential.Plasma_r)
             fig.update_layout(width = 550,
-                             plot_bgcolor='rgb(245,245,245)', #Pour modifier la couleur du background)
+                             plot_bgcolor='rgb(245,245,245)') #Pour modifier la couleur du background)
             st.plotly_chart(fig)

@@ -281,7 +281,7 @@ if page == "Graphique":
                             font = dict(size = 14), # taille du police
                             xaxis_title = "Nombre de votes", # titre de l'axe x
                             yaxis_title = "Matière",# titre de l'axe y
-                            plot_bgcolor='rgb(255,255,255)',
+                            plot_bgcolor='rgb(245,245,245)',
                             width = 900,
                             height = 500) 
         st.plotly_chart(fig)  #afficher le graphique        

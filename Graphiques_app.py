@@ -449,7 +449,7 @@ if page == "Cluster":
                              y = "Age", 
                              x = ['Casual, Urbancool, Streetwear', 'Chic, Smart, Working Girl', 'Rock, Gothique', 'Engagée, Made in France', 'Fatale', 'Bohême, Romantique', 'Vintage, Kawaii', 'Inconnu'], 
                              orientation='h', 
-                             color_discrete_sequence= ["gold","deeppink","black","orange","darkmagenta","lawngreen","lightsalmon","mediumorchid","limegreen","royalblue"])
+                             color_discrete_sequence= px.colors.sequential.Plasma_r)
                 fig.update_layout(title = "Préférences stylistique en fonction de la tranche d'âge des utilisateurs", #Ajout du titre du graphe
                               xaxis_title = "Pourcentage d'utilisateurs", #titre des axes
                               yaxis_title = "Tranches d'âges des utilisateurs",
@@ -512,7 +512,7 @@ if page == "Cluster":
             df_style = df_result[["Casual, Urbancool, Streetwear","Chic, Smart, Working Girl","Rock, Gothique","Engagée, Made in France","Fatale","Bohême, Romantique","Vintage, Kawaii","Inconnu","cluster"]] #Créé un dataframe avec que les colonnes nécessaires     
             df_style = df_style.groupby("cluster").mean().reset_index() #Regroupe les informations par cluster (aggrégation : moyenne)
             categories=["Casual,UrbanCool,Streetwear","Chic, Smart, Working Girl","Rock, Gothique","Engagée, Made in France","Fatale","Bohême, Romantique","Vintage, Kawaii","Inconnu"] #Créer une liste de label pour la légende
-            couleur = ["gold","deeppink","orange","lemonchiffon"] #Créer la liste de couleur pour différencier les clusters
+            couleur = ["gold","deeppink","black","orange","darkmagenta","lawngreen","lightsalmon","mediumorchid","limegreen","royalblue"] #Créer la liste de couleur pour différencier les clusters
             #Pour chacun des clusters choisis (df_style est créé à partir de df_result, donc les clusters non choisis sont déjà enlevés)
             data = []
             for cluster_i in range(len(df_style["cluster"])): #Pour chacun des clusters dans les clusters séléctionnés
@@ -538,7 +538,7 @@ if page == "Cluster":
             df_brand = df_result[["access_brand","mass_brand","premium_brand","hdg_brand","prestige_brand","luxe_brand","bio_brand","cluster"]] #Créé un dataframe avec que les colonnes nécessaires       
             df_brand = df_brand.groupby("cluster").mean().reset_index() #Regroupe les informations par cluster (aggrégation : moyenne)
             categories=["access","mass","premium","hdg","prestige","luxe","bio"] #Créer une liste de label pour la légende
-            couleur = ["gold","deeppink","orange","lemonchiffon"] #Créer la liste de couleur pour différencier les clusters
+            couleur = ["gold","deeppink","black","orange","darkmagenta","lawngreen","lightsalmon","mediumorchid","limegreen","royalblue"] #Créer la liste de couleur pour différencier les clusters
             #Pour chacun des clusters choisis (df_brand est créé à partir de df_result, donc les clusters non choisis sont déjà enlevés)
             data = []
             for cluster_i in range(len(df_brand["cluster"])): #Pour chacun des clusters dans les clusters séléctionnés
@@ -561,7 +561,7 @@ if page == "Cluster":
             df_mode = df_result[["access_mode","mass_mode","premium_mode","hdg_mode","hdg_mode","prestige_mode","luxe_mode","vintage_mode","eco_responsable_mode","cluster"]] #Créé un dataframe avec que les colonnes nécessaires       
             df_mode = df_mode.groupby("cluster").mean().reset_index() #Regroupe les informations par cluster (aggrégation : moyenne)
             categories=["access","mass_mode","premium","hdg","hdg","prestige","luxe","vintage","eco_responsable"] #Créer une liste de label pour la légende
-            couleur = ["gold","deeppink","orange","lemonchiffon"] #Créer la liste de couleur pour différencier les clusters
+            couleur = ["gold","deeppink","black","orange","darkmagenta","lawngreen","lightsalmon","mediumorchid","limegreen","royalblue"] #Créer la liste de couleur pour différencier les clusters
             #Pour chacun des clusters choisis (df_mode est créé à partir de df_result, donc les clusters non choisis sont déjà enlevés)
             data = []
             for cluster in range(len(df_mode["cluster"])): #Pour chacun des clusters dans les clusters séléctionnés
@@ -662,7 +662,7 @@ if page == "Cluster":
                              y=scatter_y_1, 
                              title="Corrélation", 
                              color = "cluster",
-                             color_discrete_sequence= px.colors.sequential.Plasma_r)
+                             color_discrete_sequence= ["gold","deeppink","black","orange","darkmagenta","lawngreen","lightsalmon","mediumorchid","limegreen","royalblue"])
             fig.update_layout(width = 550,
                              plot_bgcolor='rgb(245,245,245)') #Pour modifier la couleur du background)
             st.plotly_chart(fig)
@@ -672,7 +672,7 @@ if page == "Cluster":
                              y=scatter_y_2, 
                              title="Corrélation", 
                              color = "cluster",
-                             color_discrete_sequence= px.colors.sequential.Plasma_r)
+                             color_discrete_sequence= ["gold","deeppink","black","orange","darkmagenta","lawngreen","lightsalmon","mediumorchid","limegreen","royalblue"])
             fig.update_layout(width = 550,
                              plot_bgcolor='rgb(245,245,245)') #Pour modifier la couleur du background)
             st.plotly_chart(fig)

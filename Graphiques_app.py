@@ -268,6 +268,7 @@ if page == "Graphique":
                        y=df_total.index.get_level_values(0), # l'axe des matières
                        x = df_total['product name_like'], # l'axe du nombre de Like
                        orientation='h', # mettre l'orientation à l'horizontal
+                       
                        marker=dict(color = 'gold')), # choisir la couleur jaune
                 go.Bar(name= 'Dislike', # créer la barre des Dislike
                        y=df_total.index.get_level_values(0), # l'axe des matières
@@ -280,6 +281,7 @@ if page == "Graphique":
                             font = dict(size = 14), # taille du police
                             xaxis_title = "Nombre de votes", # titre de l'axe x
                             yaxis_title = "Matière",# titre de l'axe y
+                            paper_bgcolor='rgb(233,233,233)',
                             width = 900,
                             height = 500) 
         st.plotly_chart(fig)  #afficher le graphique        

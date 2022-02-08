@@ -636,10 +636,10 @@ if page == "Cluster":
                                 "y": "", #On supprime le label de l'axe y car cela est déjà identifié par le type de catégories
                                 "color":"Type de vote"}, #Titre du bloc de legende
                         title = 'Prix moyen des produits Likés vs Dislikés', #Titre du graphique
-                        plot_bgcolor='rgb(245,245,245)', #Pour modifier la couleur du background
                         width = 550,
                         height=250) #Hauteur du graphique pour qu'il soit pas trop large
-            fig.update_layout(font = dict(size = 14)) #Augmente la taille de la police
+            fig.update_layout(plot_bgcolor='rgb(245,245,245)', #Pour modifier la couleur du background
+                              font = dict(size = 14)) #Augmente la taille de la police
             st.plotly_chart(fig) #Pour afficher le graphique
             
         ######################### GRAPHIQUE PERSONNALISABLE :

@@ -162,7 +162,7 @@ if page == "Graphique":
                                 data = df_result,
                                 columns=['Département',dicts[select_data]], #On met la valeur sélectionnée
                                 key_on='properties.code', #On relie le fichier Geoson au df_result par le code dans "properties.code" du fichier Geoson
-                                fill_color=["gold","deeppink","black","orange","darkmagenta","lawngreen","lightsalmon","mediumorchid","limegreen","royalblue"], #On met la couleur en fonction de la valeur a afficher
+                                fill_color=couleur, #On met la couleur en fonction de la valeur a afficher
                                 fill_opacity=0.8, #Rend la forme du département légerement transparant pour voir un peu les indications de la carte de base
                                 line_opacity=0.2,
                                 legend_name=dicts[select_data] #Change le nom de la légende

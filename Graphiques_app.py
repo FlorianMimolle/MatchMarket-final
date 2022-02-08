@@ -449,7 +449,7 @@ if page == "Cluster":
                              y = "Age", 
                              x = ['Casual, Urbancool, Streetwear', 'Chic, Smart, Working Girl', 'Rock, Gothique', 'Engagée, Made in France', 'Fatale', 'Bohême, Romantique', 'Vintage, Kawaii', 'Inconnu'], 
                              orientation='h', 
-                             color_discrete_sequence= px.colors.sequential.Plasma_r)
+                             color_discrete_sequence= ["gold","deeppink","black","orange","darkmagenta","lawngreen","lightsalmon","mediumorchid","limegreen","royalblue"])
                 fig.update_layout(title = "Préférences stylistique en fonction de la tranche d'âge des utilisateurs", #Ajout du titre du graphe
                               xaxis_title = "Pourcentage d'utilisateurs", #titre des axes
                               yaxis_title = "Tranches d'âges des utilisateurs",

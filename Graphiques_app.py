@@ -33,7 +33,7 @@ if page != "Accueil":
 if page == "Accueil":
     col1,col2 = st.columns([0.5,1])
     with col1:
-        st.markdown("<h1 style='color:blue;'>MATCHMARKET</h1>", unsafe_allow_html=True)
+        st.markdown("<h1 style='color:white;'>MATCHMARKET</h1>", unsafe_allow_html=True)
         st.markdown("<h3 style='text-align: center;'> <img src='https://github.com/FlorianMimolle/MatchMarket-final/blob/master/Analyse.png?raw=true' alt='drawing' width='300'/></h3>", 
                     unsafe_allow_html=True)
     with col2:
@@ -45,9 +45,6 @@ if page == "Accueil":
         st.markdown("<p style='text-align: center;'>En cochant 'Afficher les tableaux de données', la table globale et celle servant à la construction du graphique en cours s'affichent. Elles sont filtrées également.</p>", unsafe_allow_html=True)
         
     col1,col2 = st.columns([1,0.5])
-    with col2:
-        st.markdown("<h3 style='text-align: center;'> <img src='https://github.com/FlorianMimolle/MatchMarket-final/blob/master/Cluster.png?raw=true' alt='drawing' width='300'/></h3>", 
-                    unsafe_allow_html=True)
     with col1:
         st.markdown("<h1 style='text-align: center;'>Cluster</h1>", unsafe_allow_html=True)
         st.markdown("<p style='text-align: center;'>Cet onglet présente l'analyse des clusters obtenus par Machine Learning.</p>", unsafe_allow_html=True)
@@ -56,6 +53,10 @@ if page == "Accueil":
         st.markdown("<p style='text-align: center;'>A gauche de certain graphique, des sélécteurs sont disponibles pour obtenir des analyses supplémentaires.</p>", unsafe_allow_html=True)
         st.markdown("<p style='text-align: center;'>En bas de la page, vous avez la possibilité de créer vos propres graphiques pour aller encore plus loin !</p>", unsafe_allow_html=True)
         st.markdown("<p style='text-align: center;'>Et il est toujours possible d'afficher la table des clusters en cochant l'option 'Afficher les Tableaux de données'</p>", unsafe_allow_html=True)
+    with col2:
+        st.markdown("<h1 style='color:white;'>MATCHMARKET</h1>", unsafe_allow_html=True)
+        st.markdown("<h3 style='text-align: center;'> <img src='https://github.com/FlorianMimolle/MatchMarket-final/blob/master/Cluster.png?raw=true' alt='drawing' width='300'/></h3>", 
+                    unsafe_allow_html=True)
 
 ###################################################################GRAPHIQUE#####################################################################  
 if page == "Graphique":

@@ -350,7 +350,8 @@ if page == "Graphique":
                             "color":"Type de vote"}, #Titre du bloc de legende
                     title = "Nombre de Like/Dislike en fonction de la couleur des articles<br>Vif : article ayant au moins une couleur vive<br>Neutre : article ayant au moins une couleur neutre<br> ") #Titre du graphique
         fig.update_layout(width = 1200,
-                          height = len(campaign_id)*10+250,
+                          height = len(campaign_id)*8+350, #Adapte la hauteur de la figure en fonction du nombre de campaign_id
+                          plot_bgcolor='rgb(245,245,245)', #Pour modifier la couleur du background
                           font = dict(size = 14)) #Augmente la taille de la police
         st.plotly_chart(fig) #Pour afficher le graphique
 

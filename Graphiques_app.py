@@ -145,11 +145,11 @@ if page == "Graphique":
         #On créé un dictionnaire pour faire la traduction entre les noms de colonne et Comment on veut faire apparaître sur la page streamlit:
         dicts = {"Nombre de Praedicters":'nb_Client',
                 "Âge moyen": 'Âge',
-                "Pourcentage de Preadicters venant du milieu Urbain": 'Urbain',
+                "Pourcentage de Praedicters venant du milieu Urbain": 'Urbain',
                 "Pourcentage de Like": '%Like'}
         #Selecteur pour sélectionner la valeur à afficher sur la carte:
         select_data = st.radio("",
-                               ("Nombre de Praedicters", "Âge moyen","Pourcentage de Preadicters venant du milieu Urbain",'Pourcentage de Like'))
+                               ("Nombre de Praedicters", "Âge moyen","Pourcentage de Praedicters venant du milieu Urbain",'Pourcentage de Like'))
         #On modifie la couleur si %Like en vert/Jaune/rouge :
         if select_data == "Pourcentage de Like":
             couleur = "RdYlGn"
@@ -475,7 +475,7 @@ if page == "Cluster":
                               width = 470,
                               height = 400,
                               plot_bgcolor='rgb(245,245,245)', #Pour modifier la couleur du background
-                              yaxis_title = "Nombre de clients", #Label de y
+                              yaxis_title = "Nombre de Praedicters", #Label de y
                               xaxis_title = "Âge") #Label de x
             st.plotly_chart(fig) 
         ##############GRAPHIQUE POURCENTAGE DE MILIEU URBAIN :
@@ -517,9 +517,9 @@ if page == "Cluster":
                              x = ['Casual, Urbancool, Streetwear', 'Chic, Smart, Working Girl', 'Rock, Gothique', 'Engagée, Made in France', 'Fatale', 'Bohême, Romantique', 'Vintage, Kawaii', 'Inconnu'], 
                              orientation='h', 
                              color_discrete_sequence= px.colors.sequential.Plasma_r)
-                fig.update_layout(title = "Préférences stylistique en fonction de la tranche d'âge des utilisateurs", #Ajout du titre du graphe
-                              xaxis_title = "Pourcentage d'utilisateurs", #titre des axes
-                              yaxis_title = "Tranches d'âges des utilisateurs",
+                fig.update_layout(title = "Préférences stylistique en fonction de la tranche d'âge des Praedicters", #Ajout du titre du graphe
+                              xaxis_title = "Pourcentage de Praedicters", #titre des axes
+                              yaxis_title = "Tranches d'âges des Praedicters",
                               legend_title = "Préférence stylistique", #titre de la légende 
                               height = 400, #dimensions du graphe
                               width = 900,
@@ -540,9 +540,9 @@ if page == "Cluster":
                              x = ['Access', 'Mass', 'Premium', 'Haut de Gamme', 'Luxe', 'Bio'], 
                              orientation='h', 
                              color_discrete_sequence= px.colors.sequential.Plasma_r)
-                fig.update_layout(title = "Gamme de marques préférées en fonction de la tranche d'âges des utilisateurs", #Ajout du titre du graphe
-                              xaxis_title = "Pourcentage d'utilisateurs", #titre des axes
-                              yaxis_title = "Tranche d'âges  des utilisateurs",
+                fig.update_layout(title = "Gamme de marques préférées en fonction de la tranche d'âges des Praedicters", #Ajout du titre du graphe
+                              xaxis_title = "Pourcentage de Praedicters", #titre des axes
+                              yaxis_title = "Tranche d'âges des Praedicters",
                               legend_title = "Catégories préférencielles",  #titre de la légende
                               plot_bgcolor='rgb(245,245,245)', #Pour modifier la couleur du background
                               height = 400, #dimensions du graphe
@@ -565,7 +565,7 @@ if page == "Cluster":
                              color_discrete_sequence= px.colors.sequential.Plasma_r)
                 fig.update_layout(title = "Gamme de marques préférées en fonction de la tranche d'âge des utilisateurs", #Ajout du titre du graphe
                               xaxis_title = "Pourcentage d'utilisateurs", #titre des axes
-                              yaxis_title = "Tranches d'âges  des utilisateurs",
+                              yaxis_title = "Tranches d'âges des Praedicters",
                               legend_title = "Catégories préférencielles", #titre de la légende 
                               plot_bgcolor='rgb(245,245,245)', #Pour modifier la couleur du background
                               height = 400, #dimensions du graphe
@@ -677,7 +677,7 @@ if page == "Cluster":
                         labels={"x": "critère ciblé", #On supprime le label de l'axe x car cela est déjà identifié par le type de catégories
                                 "y": "Nombre de vote", #Label de l'axe y
                                 "color":"Type de votes"}, #Titre du bloc de legende
-                        title = "nombre de Like/Dislike d'articles ayant le critère ciblé") #Titre du graphique
+                        title = "Nombre de Like/Dislike d'articles ayant le critère ciblé") #Titre du graphique
             fig.update_layout(font = dict(size = 14),
                               plot_bgcolor='rgb(245,245,245)', #Pour modifier la couleur du background
                               width = 550) #Augmente la taille de la police

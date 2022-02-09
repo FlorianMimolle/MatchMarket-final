@@ -42,7 +42,6 @@ if page == "Accueil":
         st.markdown("<p style='text-align: center;'>Cet onglet présente des graphiques analysants la base de données nettoyée avant Machine Learning.</p>", unsafe_allow_html=True)
         st.markdown("<p style='text-align: center;'>Grâce au sélecteur on peut afficher :<br>- La carte de France<br>- La carte des Départements<br>- Une analyse des matières<br>- Une analyse des couleurs</p>", unsafe_allow_html=True)
         st.markdown("<p style='text-align: center;'>On peut filtrer à tout moment sur le type de campagne ou le campaign_id.<br>Les graphiques s'ajusteront alors automatiquement.</p>", unsafe_allow_html=True)
-        st.markdown("<p style='text-align: center;'>En cochant 'Afficher les tableaux de données', la table globale et celle servant à la construction du graphique en cours s'affichent. Elles sont filtrées également.</p>", unsafe_allow_html=True)
         
     col1,col2 = st.columns(2)
     with col1:
@@ -52,11 +51,11 @@ if page == "Accueil":
         st.markdown("<p style='text-align: center;'>Vous pouvez sélectionner un ou plusieurs cluster pour les comparer</p>", unsafe_allow_html=True)
         st.markdown("<p style='text-align: center;'>A gauche de certain graphique, des sélécteurs sont disponibles pour obtenir des analyses supplémentaires.</p>", unsafe_allow_html=True)
         st.markdown("<p style='text-align: center;'>En bas de la page, vous avez la possibilité de créer vos propres graphiques pour aller encore plus loin !</p>", unsafe_allow_html=True)
-        st.markdown("<p style='text-align: center;'>Et il est toujours possible d'afficher la table des clusters en cochant l'option 'Afficher les Tableaux de données'</p>", unsafe_allow_html=True)
     with col2:
         st.markdown("<h1 style='color:white;'>MATCHMARKET</h1>", unsafe_allow_html=True)
         st.markdown("<h3 style='text-align: center;'> <img src='https://github.com/FlorianMimolle/MatchMarket-final/blob/master/Cluster.png?raw=true' alt='drawing' width='300'/></h3>", 
                     unsafe_allow_html=True)
+    st.markdown("<p style='text-align: center;'>En cochant 'Afficher les tableaux de données', la table globale et celle servant à la construction du graphique en cours s'affichent. Elles sont filtrées également.</p>", unsafe_allow_html=True)
 
 ###################################################################GRAPHIQUE#####################################################################  
 if page == "Graphique":

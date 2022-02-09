@@ -311,6 +311,7 @@ if page == "Graphique":
         st.plotly_chart(fig)
         
         ####Couleur par campaign_id : 
+        st.title("Nombre de Like/Dislike en fonction de la couleur des articles<br>Vif : article ayant au moins une couleur vive<br>Neutre : article ayant au moins une couleur neutre)
         vote = []
         campaign_id = []
         type_vote = []
@@ -347,8 +348,7 @@ if page == "Graphique":
                     orientation='h', #Met les barres à l'horyzontale
                     labels={"x": "Nombre de votes", #On supprime le label de l'axe x car cela est déjà identifié par le type de catégories
                             "y": "Campaign_id", #Label de l'axe y
-                            "color":"Type de vote"}, #Titre du bloc de legende
-                    title = "Nombre de Like/Dislike en fonction de la couleur des articles<br>Vif : article ayant au moins une couleur vive<br>Neutre : article ayant au moins une couleur neutre<br> ") #Titre du graphique
+                            "color":"Type de vote"}) #Titre du bloc de legende
         fig.update_layout(width = 1100,
                           height = len(campaign_id)*8+450, #Adapte la hauteur de la figure en fonction du nombre de campaign_id
                           plot_bgcolor='rgb(245,245,245)', #Pour modifier la couleur du background

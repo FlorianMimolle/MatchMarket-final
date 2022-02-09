@@ -49,10 +49,12 @@ if page == "Accueil":
                     unsafe_allow_html=True)
     with col1:
         st.markdown("<h1 style='text-align: center;'>Cluster</h1>", unsafe_allow_html=True)
-        st.markdown("<p style='text-align: center;'>Cet onglet présente l'analyse des clusters optenus par Machine Learning.</p>", unsafe_allow_html=True)
-        st.markdown("<p style='text-align: center;'>Le clustering est réalisée séparement pour chacun des 3 types de campagne (Mode, Décoration, Cosmétique).<br>Grâce au sélecteur, on peut les afficher un par un.r</p>", unsafe_allow_html=True)
+        st.markdown("<p style='text-align: center;'>Cet onglet présente l'analyse des clusters obtenus par Machine Learning.</p>", unsafe_allow_html=True)
+        st.markdown("<p style='text-align: center;'>Le clustering est réalisé séparement pour chacun des 3 types de campagne (Mode, Décoration, Cosmétique).<br>Grâce au sélecteur, on peut les afficher un par un.</p>", unsafe_allow_html=True)
         st.markdown("<p style='text-align: center;'>Vous pouvez sélectionner un ou plusieurs cluster pour les comparer</p>", unsafe_allow_html=True)
+        st.markdown("<p style='text-align: center;'>A gauche de certain graphique, des sélécteurs sont disponibles pour obtenir des analyses supplémentaires.</p>", unsafe_allow_html=True)
         st.markdown("<p style='text-align: center;'>En bas de la page, vous avez la possibilité de créer vos propres graphiques pour aller encore plus loin !</p>", unsafe_allow_html=True)
+        st.markdown("<p style='text-align: center;'>Et il est toujours possible d'afficher la table des clusters en cochant l'option 'Afficher les Tableaux de données'</p>", unsafe_allow_html=True)
 
 ###################################################################GRAPHIQUE#####################################################################  
 if page == "Graphique":

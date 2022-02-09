@@ -33,7 +33,7 @@ if page != "Accueil":
 if page == "Accueil":
     col1,col2 = st.columns([0.5,1])
     with col1:
-        st.markdown("<h1 style='color:blue;'>MATCHMARKET</h1>")
+        st.markdown(<h1 style='color:blue;'>MATCHMARKET</h1>)
         st.markdown("<h3 style='text-align: center;'> <img src='https://github.com/FlorianMimolle/MatchMarket-final/blob/master/Analyse.png?raw=true' alt='drawing' width='300'/></h3>", 
                     unsafe_allow_html=True)
     with col2:

@@ -38,7 +38,8 @@ if page == "Accueil":
         
         st.markdown("<h1 style='text-align: center;'>Graphique</h1>", unsafe_allow_html=True)
         st.markdown("<p style='text-align: center;'>Cet onglet présente des graphiques analysants la base de données nettoyées avant machine learning.</p>", unsafe_allow_html=True)
-        st.markdown("<p style='text-align: center;'>- La carte de France<br>- La carte des Départements<br>- Une analyse des matériaux<br>- Une analyse des couleurs</p>", unsafe_allow_html=True)
+        st.markdown("<p style='text-align: center;'>Grâce au sélecteur on peut afficher :<br>- La carte de France<br>- La carte des Départements<br>- Une analyse des matériaux<br>- Une analyse des couleurs</p>", unsafe_allow_html=True)
+        st.markdown("<p style='text-align: center;'>On peut filtrer à tous moment sur le type de campagne ou le campaign_id</p>", unsafe_allow_html=True)
     
     col1,col2 = st.columns(2)
     with col2:

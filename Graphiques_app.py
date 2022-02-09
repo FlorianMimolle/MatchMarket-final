@@ -26,7 +26,28 @@ st.sidebar.image("https://github.com/FlorianMimolle/MatchMarket-final/blob/maste
 
 #Met les options cochables dans la sidebar pour afficher le tableau de donné ainsi que le menu soit graphique, soit cluster:
 table = st.sidebar.checkbox("Afficher le Tableau de données ")
-page = st.sidebar.radio("Page",("Graphique","Cluster"))
+page = st.sidebar.radio("Page",("Accueil","Graphique","Cluster"))
+
+###################################################################ACCUEIL#####################################################################  
+if page == "Accueil":
+    col1,col2 = st.columns(2)
+    with col1:
+        st.markdown("<h3 style='text-align: center;'> <img src='https://github.com/FlorianMimolle/MatchMarket-final/blob/master/Analyse.png?raw=true' alt='drawing' width='500'/></h3>", 
+                    unsafe_allow_html=True)
+    with col2:
+        
+        st.markdown("<h1 style='text-align: center;'>Graphique</h1>", unsafe_allow_html=True)
+        st.markdown("<h3 style='text-align: center;'>Cet onglet présente des graphiques analysants la base de données nettoyées avant machine learning.</h3>", unsafe_allow_html=True)
+        st.markdown("<h3 style='text-align: center;'>- La carte de France<br>- La carte des Départements<br>- Une analyse des matériaux<br>- Une analyse des couleurs</h3>", unsafe_allow_html=True)
+    
+    col1,col2 = st.columns(2)
+    with col2:
+        st.markdown("<h3 style='text-align: center;'> <img src='https://github.com/FlorianMimolle/MatchMarket-final/blob/master/Cluster.png?raw=true' alt='drawing' width='500'/></h3>", 
+                    unsafe_allow_html=True)
+    with col1:
+        st.markdown("<h1 style='text-align: center;'>Cluster</h1>", unsafe_allow_html=True)
+        st.markdown("<h3 style='text-align: center;'>Cet onglet présente l'analyse des clusters optenus par machine learning.</h3>", unsafe_allow_html=True)
+        st.markdown("<h3 style='text-align: center;'>Vous pouvez sélectionner un ou plusieurs cluster pour les comparer</h3>", unsafe_allow_html=True)
 
 ###################################################################GRAPHIQUE#####################################################################  
 if page == "Graphique":

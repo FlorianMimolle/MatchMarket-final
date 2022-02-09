@@ -25,8 +25,9 @@ st.set_page_config(layout="wide")
 st.sidebar.image("https://github.com/FlorianMimolle/MatchMarket-final/blob/master/mjyLok-f_400x400.png?raw=true")
 
 #Met les options cochables dans la sidebar pour afficher le tableau de donné ainsi que le menu soit graphique, soit cluster:
-table = st.sidebar.checkbox("Afficher le Tableau de données ")
 page = st.sidebar.radio("Page",("Accueil","Graphique","Cluster"))
+if page != "Accueil":
+    table = st.sidebar.checkbox("Afficher le Tableau de données ")
 
 ###################################################################ACCUEIL#####################################################################  
 if page == "Accueil":
@@ -37,10 +38,11 @@ if page == "Accueil":
     with col2:
         
         st.markdown("<h1 style='text-align: center;'>Graphique</h1>", unsafe_allow_html=True)
-        st.markdown("<p style='text-align: center;'>Cet onglet présente des graphiques analysants la base de données nettoyées avant machine learning.</p>", unsafe_allow_html=True)
-        st.markdown("<p style='text-align: center;'>Grâce au sélecteur on peut afficher :<br>- La carte de France<br>- La carte des Départements<br>- Une analyse des matériaux<br>- Une analyse des couleurs</p>", unsafe_allow_html=True)
-        st.markdown("<p style='text-align: center;'>On peut filtrer à tous moment sur le type de campagne ou le campaign_id</p>", unsafe_allow_html=True)
-    
+        st.markdown("<p style='text-align: center;'>Cet onglet présente des graphiques analysants la base de données nettoyée avant machine learning.</p>", unsafe_allow_html=True)
+        st.markdown("<p style='text-align: center;'>Grâce au sélecteur on peut afficher :<br>- La carte de France<br>- La carte des Départements<br>- Une analyse des matières<br>- Une analyse des couleurs</p>", unsafe_allow_html=True)
+        st.markdown("<p style='text-align: center;'>On peut filtrer à tout moment sur le type de campagne ou le campaign_id, les graphiques s'ajusteront alors automatiquement.</p>", unsafe_allow_html=True)
+        st.markdown("<p style='text-align: center;'>En cochant 'Afficher les tableaux de données', la table globale et celle servant à la construction du graphique en cours s'affichent. Elles sont filtrées également.</p>", unsafe_allow_html=True)
+        
     col1,col2 = st.columns(2)
     with col2:
         st.markdown("<h3 style='text-align: center;'> <img src='https://github.com/FlorianMimolle/MatchMarket-final/blob/master/Cluster.png?raw=true' alt='drawing' width='300'/></h3>", 
@@ -338,7 +340,6 @@ if page == "Graphique":
                     color = df_Naturel["type_vote"], #Pour mettre une couleur jaune aux Like et rose aux Dislike
                     color_discrete_map={'Like': 'gold','Dislike': 'deeppink'},
                     orientation='h', #Met les barres à l'horyzontale
-                    facet_col = type_vote,
                     labels={"x": "Nombre de votes", #On supprime le label de l'axe x car cela est déjà identifié par le type de catégories
                             "y": "Campaign_id", #Label de l'axe y
                             "color":"Type de vote"}) #Titre du bloc de legende

@@ -338,6 +338,7 @@ if page == "Graphique":
                     color = df_Naturel["type_vote"], #Pour mettre une couleur jaune aux Like et rose aux Dislike
                     color_discrete_map={'Like': 'gold','Dislike': 'deeppink'},
                     orientation='h', #Met les barres à l'horyzontale
+                    facet_col = 'type_vote',
                     labels={"x": "Nombre de votes", #On supprime le label de l'axe x car cela est déjà identifié par le type de catégories
                             "y": "Campaign_id", #Label de l'axe y
                             "color":"Type de vote"}) #Titre du bloc de legende

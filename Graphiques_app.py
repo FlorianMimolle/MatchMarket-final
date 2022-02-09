@@ -289,28 +289,26 @@ if page == "Graphique":
     #######################color########################### :    
     if type_graphique == "Couleur":
         df_result['color'] = df_result['color'].apply(lambda x: x.replace('[','')).apply(lambda x: x.replace(']','')).apply(lambda x: x.replace("'",''))# dans la table résult les couleurs apparaitre sous forme de list exemple [noir], on vas donc enlever les crochés pour que ca  devient noir
-         df1=  df_result.groupby(["color", 'action'])\
+        df1=  df_result.groupby(["color", 'action'])\
                        .count()[["product name"]]\
                        .unstack()\
                        .sort_values(by=('product name','dislike'))\
                        .tail(10)# pour avoir une table avec les 10 coleurs les plus présenter et les votes pour ces couleurs
-         df1.columns = df1.columns.map('_'.join)
-         if table:
+        df1.columns = df1.columns.map('_'.join)
+        if table:
              st.write("Tableau de données du graphique :")# pour afficher la table en fonction des couleurs les plus présenter et les nb de votes 
              df1
-         fig = go.Figure(data=[
-             go.Bar(name= 'Like', y=df1.index.get_level_values(0), x = df1['product name_like'], orientation='h',marker=dict(color = 'gold')),
-             go.Bar(name= 'Dislike', y=df1.index.get_level_values(0), x = df1['product name_dislike'], orientation='h',marker=dict(color = 'deeppink'))
-         ])                              
-         fig.update_layout(barmode='group',
-                           title_text="Top 10 des couleurs les plus présentes",
-                           font = dict(size = 14),
-                           xaxis_title = "Nombre de votes",
-                           yaxis_title = "couleur ",
-                           plot_bgcolor='rgb(245,245,245)', #Pour modifier la couleur du background
-                           width=500,
-                           height=500)
-         st.plotly_chart(fig)
+        fig = go.Figure(data=[go.Bar(name= 'Like', y=df1.index.get_level_values(0), x = df1['product name_like'], orientation='h',marker=dict(color = 'gold')),
+                              go.Bar(name= 'Dislike', y=df1.index.get_level_values(0), x = df1['product name_dislike'], orientation='h',marker=dict(color = 'deeppink'))])                              
+        fig.update_layout(barmode='group',
+                          title_text="Top 10 des couleurs les plus présentes",
+                          font = dict(size = 14),
+                          xaxis_title = "Nombre de votes",
+                          yaxis_title = "couleur ",
+                          plot_bgcolor='rgb(245,245,245)', #Pour modifier la couleur du background
+                          width=500,
+                          height=500)
+        st.plotly_chart(fig)
         
         ####Couleur par campaign_id : 
         vote = []

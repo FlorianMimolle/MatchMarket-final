@@ -47,16 +47,18 @@ if page == "Accueil":
     with col1:
         st.markdown("<h1 style='text-align: center;'>Cluster</h1>", unsafe_allow_html=True)
         st.markdown("<p style='text-align: center;'>Cet onglet présente l'analyse des clusters obtenus par Machine Learning.</p>", unsafe_allow_html=True)
-        st.markdown("<p style='text-align: center;'>Le clustering est réalisé séparement pour chacun des 3 types de campagne (Mode, Décoration, Cosmétique).<br>Grâce au sélecteur, on peut les afficher un par un.</p>", unsafe_allow_html=True)
+        st.markdown("<p style='text-align: center;'>Le clustering est réalisé séparement pour chacun des 3 types de campagne<br>(Mode, Décoration, Cosmétique).<br>Grâce au sélecteur, on peut les afficher un par un.</p>", unsafe_allow_html=True)
         st.markdown("<p style='text-align: center;'>Vous pouvez sélectionner un ou plusieurs cluster pour les comparer</p>", unsafe_allow_html=True)
-        st.markdown("<p style='text-align: center;'>A gauche de certain graphique, des sélécteurs sont disponibles pour obtenir des analyses supplémentaires.</p>", unsafe_allow_html=True)
-        st.markdown("<p style='text-align: center;'>En bas de la page, vous avez la possibilité de créer vos propres graphiques pour aller encore plus loin !</p>", unsafe_allow_html=True)
+        st.markdown("<p style='text-align: center;'>A gauche de certains graphiques, des sélécteurs permettent d'obtenir des analyses supplémentaires.</p>", unsafe_allow_html=True)
+        st.markdown("<p style='text-align: center;'>Vous avez également la possibilité de créer vos propres graphiques pour aller encore plus loin !</p>", unsafe_allow_html=True)
     with col2:
         st.markdown("<h3 style='color:white;'>MATCHMARKET</h1>", unsafe_allow_html=True)
         st.markdown("<h3 style='text-align: center;'> <img src='https://github.com/FlorianMimolle/MatchMarket-final/blob/master/Cluster.png?raw=true' alt='drawing' width='300'/></h3>", 
                     unsafe_allow_html=True)
-    st.markdown("<p style='text-align: center;'>En cochant 'Afficher les tableaux de données', la table globale et celle servant à la construction du graphique en cours s'affichent. Elles sont filtrées également.</p>", unsafe_allow_html=True)
-
+    st.markdown("<h3 style='text-align: center;'>Options supplémentaires : </h3>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: center;'>En cochant 'Afficher les tableaux de données', la table globale et celle servant à la construction du graphique en cours s'affichent. Elles sont filtrées selon vos choix.</p>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: center;'>Vous avez la possibilités d'afficher en plein écran chaque graphique et tableau grâce au menu spécifique en haut à droite de chaque graphe.</p>", unsafe_allow_html=True)
+    st.markdown("<h3 style='text-align: center;'>Travail réalisé par :<br>Boré Charles<br>Flaquer Mérale<br>Mimolle Florian<br>Tong Lam<br>Thi Thuy Linh Le en partenariat avec MatchMarket</h3>", unsafe_allow_html=True)
 ###################################################################GRAPHIQUE#####################################################################  
 if page == "Graphique":
     #Liens du fichier :

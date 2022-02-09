@@ -32,7 +32,7 @@ page = st.sidebar.radio("Page",("Accueil","Graphique","Cluster"))
 if page == "Accueil":
     col1,col2 = st.columns(2)
     with col1:
-        st.markdown("<h3 style='text-align: center;'> <img src='https://github.com/FlorianMimolle/MatchMarket-final/blob/master/Analyse.png?raw=true' alt='drawing' width='500'/></h3>", 
+        st.markdown("<h3 style='text-align: center;'> <img src='https://github.com/FlorianMimolle/MatchMarket-final/blob/master/Analyse.png?raw=true' alt='drawing' width='300'/></h3>", 
                     unsafe_allow_html=True)
     with col2:
         
@@ -42,7 +42,7 @@ if page == "Accueil":
     
     col1,col2 = st.columns(2)
     with col2:
-        st.markdown("<h3 style='text-align: center;'> <img src='https://github.com/FlorianMimolle/MatchMarket-final/blob/master/Cluster.png?raw=true' alt='drawing' width='500'/></h3>", 
+        st.markdown("<h3 style='text-align: center;'> <img src='https://github.com/FlorianMimolle/MatchMarket-final/blob/master/Cluster.png?raw=true' alt='drawing' width='300'/></h3>", 
                     unsafe_allow_html=True)
     with col1:
         st.markdown("<h1 style='text-align: center;'>Cluster</h1>", unsafe_allow_html=True)

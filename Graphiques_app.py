@@ -174,7 +174,7 @@ if page == "Graphique":
                                ("Nombre de Praedicters", "Âge moyen","Pourcentage de Praedicters venant du milieu Urbain",'Pourcentage de Like'))
         #On modifie la couleur si %Like en vert/Jaune/rouge :
         if select_data == "Pourcentage de Like":
-            couleur = "RdYlGn"
+            couleur = "PiYG"
         else: #Sinon, on met la couleur dans les tons roses:
             couleur = "RdPu"
         #On créé la carte de base:

@@ -58,7 +58,7 @@ if page == "Accueil":
     st.markdown("<h3 style='text-align: center;'>Options supplémentaires : </h3>", unsafe_allow_html=True)
     st.markdown("<p style='text-align: center;'>En cochant 'Afficher les tableaux de données', la table globale et celle servant à la construction du graphique en cours s'affichent. Elles sont filtrées selon vos choix.</p>", unsafe_allow_html=True)
     st.markdown("<p style='text-align: center;'>Vous avez la possibilités d'afficher en plein écran chaque graphique et tableau grâce au menu spécifique en haut à droite de chaque graphe.</p>", unsafe_allow_html=True)
-    st.markdown("<h3 style='text-align: center;'>Travail réalisé par :<br>Boré Charles<br>Flaquer Mérale<br>Mimolle Florian<br>Tong Lam<br>Thi Thuy Linh Le en partenariat avec MatchMarket</h3>", unsafe_allow_html=True)
+    st.markdown("<h3 style='text-align: center;'>Travail réalisé par :<br>Boré Charles<br>Flaquer Mérale<br>Mimolle Florian<br>Tong Lam<br>Thi Thuy Linh Le<br>En partenariat avec MatchMarket</h3>", unsafe_allow_html=True)
 ###################################################################GRAPHIQUE#####################################################################  
 if page == "Graphique":
     #Liens du fichier :

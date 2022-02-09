@@ -288,56 +288,74 @@ if page == "Graphique":
 
     #######################color########################### :    
     if type_graphique == "Couleur":
-        col1, col2 = st.columns(2)# pour avoir deux graphique cote à cote 
-        with col1:
-            df1= df_result.groupby(["campaign_id","action"])\
-                            .sum()[["neutre","vif"]].unstack()\
-                            .sort_values(by =["campaign_id"],ascending = True)# crée un dataframe regrouper par campagne_id et action de votes pour les couleurs
-            df1['neutre', 'dislike']=df1['neutre', 'dislike']*(-1)# multiplié par -1 pour les colonnes dislikes pour avoir 2 coté like et dislikes sur le graphique
-            df1['vif', 'dislike']=df1['vif', 'dislike']*(-1)
-            df1.columns = df1.columns.map('_'.join)
-            if table:
-                st.write("Tableau de données du graphique :")# pour afficher la table qu'on viens de crée
-                df1 
-            fig = go.Figure(data=[
-                go.Bar(name= 'Like-neutre', y=df1.index.get_level_values(0), x = df1['neutre_like'], orientation='h',marker=dict(color = 'lawngreen')),# pour mettre la couleur lawngreen pour les bars like-neutre
-                go.Bar(name= 'Dislike-neutre', y=df1.index.get_level_values(0), x = df1['neutre_dislike'], orientation='h',marker=dict(color = 'pink')),#pour mettre la couleur pink pour les bars dislike-neutre
-                go.Bar(name= 'Like-vif', y=df1.index.get_level_values(0), x = df1['vif_like'], orientation='h',marker=dict(color = 'gold')),#pour mettre la couleur gold pour les bars like-vif
-                go.Bar(name= 'Dislike-vif', y=df1.index.get_level_values(0), x = df1['vif_dislike'], orientation='h',marker=dict(color = 'deeppink'))#pour mettre la couleur deeppink pour les bars dislike-vif
-            ])                              
-            fig.update_layout(barmode='group',
-                              title_text="Nombre de votes like, dislike selon les couleurs<br>et par campagne ",# titre du graphique
-                              font = dict(size = 14),
-                              xaxis_title = "Nombre de votes",# titre pour x
-                              yaxis_title = "campagne_id ",# titre pour y
-                              plot_bgcolor='rgb(245,245,245)', #Pour modifier la couleur du background
-                              width=500,
-                              height=500)
-            st.plotly_chart(fig)  
-        with col2:
-            df_result['color'] = df_result['color'].apply(lambda x: x.replace('[','')).apply(lambda x: x.replace(']','')).apply(lambda x: x.replace("'",''))# dans la table résult les couleurs apparaitre sous forme de list exemple [noir], on vas donc enlever les crochés pour que ca  devient noir
-            df1=  df_result.groupby(["color", 'action'])\
-                          .count()[["product name"]]\
-                          .unstack()\
-                          .sort_values(by=('product name','dislike'))\
-                          .tail(10)# pour avoir une table avec les 10 coleurs les plus présenter et les votes pour ces couleurs
-            df1.columns = df1.columns.map('_'.join)
-            if table:
-                st.write("Tableau de données du graphique :")# pour afficher la table en fonction des couleurs les plus présenter et les nb de votes 
-                df1
-            fig = go.Figure(data=[
-                go.Bar(name= 'Like', y=df1.index.get_level_values(0), x = df1['product name_like'], orientation='h',marker=dict(color = 'gold')),
-                go.Bar(name= 'Dislike', y=df1.index.get_level_values(0), x = df1['product name_dislike'], orientation='h',marker=dict(color = 'deeppink'))
-            ])                              
-            fig.update_layout(barmode='group',
-                              title_text="Top 10 des couleurs les plus présentes",
-                              font = dict(size = 14),
-                              xaxis_title = "Nombre de votes",
-                              yaxis_title = "couleur ",
-                              plot_bgcolor='rgb(245,245,245)', #Pour modifier la couleur du background
-                              width=500,
-                              height=500)
-            st.plotly_chart(fig)
+        df1= df_result.groupby(["campaign_id","action"])\
+                        .sum()[["neutre","vif"]].unstack()\
+                        .sort_values(by =["campaign_id"],ascending = True)# crée un dataframe regrouper par campagne_id et action de votes pour les couleurs
+        df1['neutre', 'dislike']=df1['neutre', 'dislike']*(-1)# multiplié par -1 pour les colonnes dislikes pour avoir 2 coté like et dislikes sur le graphique
+        df1['vif', 'dislike']=df1['vif', 'dislike']*(-1)
+        df1.columns = df1.columns.map('_'.join)
+        if table:
+            st.write("Tableau de données du graphique :")# pour afficher la table qu'on viens de crée
+            df1 
+        fig = go.Figure(data=[
+            go.Bar(name= 'Like-neutre', y=df1.index.get_level_values(0), x = df1['neutre_like'], orientation='h',marker=dict(color = 'lawngreen')),# pour mettre la couleur lawngreen pour les bars like-neutre
+            go.Bar(name= 'Dislike-neutre', y=df1.index.get_level_values(0), x = df1['neutre_dislike'], orientation='h',marker=dict(color = 'pink')),#pour mettre la couleur pink pour les bars dislike-neutre
+            go.Bar(name= 'Like-vif', y=df1.index.get_level_values(0), x = df1['vif_like'], orientation='h',marker=dict(color = 'gold')),#pour mettre la couleur gold pour les bars like-vif
+            go.Bar(name= 'Dislike-vif', y=df1.index.get_level_values(0), x = df1['vif_dislike'], orientation='h',marker=dict(color = 'deeppink'))#pour mettre la couleur deeppink pour les bars dislike-vif
+        ])                              
+        fig.update_layout(barmode='group',
+                          title_text="Nombre de votes like, dislike selon les couleurs<br>et par campagne ",# titre du graphique
+                          font = dict(size = 14),
+                          xaxis_title = "Nombre de votes",# titre pour x
+                          yaxis_title = "campagne_id ",# titre pour y
+                          plot_bgcolor='rgb(245,245,245)', #Pour modifier la couleur du background
+                          width=1200,
+                          height=500)
+        st.plotly_chart(fig) 
+        
+        ####Couleur par campaign_id : 
+        vote = []
+        campaign_id = []
+        type_vote = []
+        #On créé une boucle pour aller chercher les différentes valeurs de campaign_id, et de nombre de vote en fonction de campaign_id : 
+        for id in sorted(df_result["campaign_id"].unique()):
+            #Like Vif :
+            like_vif_i = len(df_result[(df_result["campaign_id"]==id)&(df_result["action"]=="like")&(df_result["vif"]>0)]) 
+            vote.append(like_vif_i)
+            campaign_id.append(str(id) + "_Vif")
+            type_vote.append("Like")
+            #Dislike Vif : 
+            dislike_vif_i = (-1)*len(df_result[(df_result["campaign_id"]==id)&(df_result["action"]=="dislike")&(df_result["vif"]>0)])
+            vote.append(dislike_vif_i)
+            campaign_id.append(str(id) + "_Vif")
+            type_vote.append("Dislike")
+            #Like neutre : 
+            like_neutre_i = len(df_result[(df_result["campaign_id"]==id)&(df_result["action"]=="like")&(df_result["neutre"]>0)])
+            vote.append(like_neutre_i)
+            campaign_id.append(str(id) + "_Neutre")
+            type_vote.append("Like")
+            #Dislike neutre : 
+            dislike_neutre_i = (-1)*len(df_result[(df_result["campaign_id"]==id)&(df_result["action"]=="dislike")&(df_result["neutre"]>0)])
+            vote.append(dislike_neutre_i)
+            campaign_id.append(str(id) + "_Neutre")
+            type_vote.append("Dislike")
+        #On créé le dataframe vif :           
+        df_vif = pd.DataFrame({"type_vote":type_vote,
+                                "vote":vote,
+                                "campaign_id":campaign_id})
+        fig = px.bar(y=campaign_id, #Label de chaque campaign_id
+                    x=df_vif["vote"], #Valeurs des votes
+                    color = df_vif["type_vote"], #Pour mettre une couleur jaune aux Like et rose aux Dislike
+                    color_discrete_map={'Like': 'gold','Dislike': 'deeppink'},
+                    orientation='h', #Met les barres à l'horyzontale
+                    labels={"x": "Nombre de votes", #On supprime le label de l'axe x car cela est déjà identifié par le type de catégories
+                            "y": "Campaign_id", #Label de l'axe y
+                            "color":"Type de vote"}, #Titre du bloc de legende
+                    title = "Nombre de Like/Dislike en fonction de la couleur des articles<br>Vif : article ayant au moins une couleur vive<br>Neutre : article ayant au moins une couleur neutre<br> ") #Titre du graphique
+        fig.update_layout(width = 1200,
+                          height = len(campaign_id)*10+250,
+                          font = dict(size = 14)) #Augmente la taille de la police
+        st.plotly_chart(fig) #Pour afficher le graphique
 
 ####################################################################CLUSTERS#####################################################################  
 if page == "Cluster":

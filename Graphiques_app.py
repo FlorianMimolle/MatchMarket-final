@@ -311,7 +311,7 @@ if page == "Graphique":
         st.plotly_chart(fig)
         
         ####Couleur par campaign_id : 
-        st.title("Nombre de Like/Dislike en fonction de la couleur des articles<br>Vif : article ayant au moins une couleur vive<br>Neutre : article ayant au moins une couleur neutre)
+        st.title("Nombre de Like/Dislike en fonction de la couleur des articles<br>Vif : article ayant au moins une couleur vive<br>Neutre : article ayant au moins une couleur neutre")
         vote = []
         campaign_id = []
         type_vote = []

@@ -288,30 +288,29 @@ if page == "Graphique":
 
     #######################color########################### :    
     if type_graphique == "Couleur":
-        df1= df_result.groupby(["campaign_id","action"])\
-                        .sum()[["neutre","vif"]].unstack()\
-                        .sort_values(by =["campaign_id"],ascending = True)# crée un dataframe regrouper par campagne_id et action de votes pour les couleurs
-        df1['neutre', 'dislike']=df1['neutre', 'dislike']*(-1)# multiplié par -1 pour les colonnes dislikes pour avoir 2 coté like et dislikes sur le graphique
-        df1['vif', 'dislike']=df1['vif', 'dislike']*(-1)
-        df1.columns = df1.columns.map('_'.join)
-        if table:
-            st.write("Tableau de données du graphique :")# pour afficher la table qu'on viens de crée
-            df1 
-        fig = go.Figure(data=[
-            go.Bar(name= 'Like-neutre', y=df1.index.get_level_values(0), x = df1['neutre_like'], orientation='h',marker=dict(color = 'lawngreen')),# pour mettre la couleur lawngreen pour les bars like-neutre
-            go.Bar(name= 'Dislike-neutre', y=df1.index.get_level_values(0), x = df1['neutre_dislike'], orientation='h',marker=dict(color = 'pink')),#pour mettre la couleur pink pour les bars dislike-neutre
-            go.Bar(name= 'Like-vif', y=df1.index.get_level_values(0), x = df1['vif_like'], orientation='h',marker=dict(color = 'gold')),#pour mettre la couleur gold pour les bars like-vif
-            go.Bar(name= 'Dislike-vif', y=df1.index.get_level_values(0), x = df1['vif_dislike'], orientation='h',marker=dict(color = 'deeppink'))#pour mettre la couleur deeppink pour les bars dislike-vif
-        ])                              
-        fig.update_layout(barmode='group',
-                          title_text="Nombre de votes like, dislike selon les couleurs<br>et par campagne ",# titre du graphique
-                          font = dict(size = 14),
-                          xaxis_title = "Nombre de votes",# titre pour x
-                          yaxis_title = "campagne_id ",# titre pour y
-                          plot_bgcolor='rgb(245,245,245)', #Pour modifier la couleur du background
-                          width=1200,
-                          height=500)
-        st.plotly_chart(fig) 
+        df_result['color'] = df_result['color'].apply(lambda x: x.replace('[','')).apply(lambda x: x.replace(']','')).apply(lambda x: x.replace("'",''))# dans la table résult les couleurs apparaitre sous forme de list exemple [noir], on vas donc enlever les crochés pour que ca  devient noir
+         df1=  df_result.groupby(["color", 'action'])\
+                       .count()[["product name"]]\
+                       .unstack()\
+                       .sort_values(by=('product name','dislike'))\
+                       .tail(10)# pour avoir une table avec les 10 coleurs les plus présenter et les votes pour ces couleurs
+         df1.columns = df1.columns.map('_'.join)
+         if table:
+             st.write("Tableau de données du graphique :")# pour afficher la table en fonction des couleurs les plus présenter et les nb de votes 
+             df1
+         fig = go.Figure(data=[
+             go.Bar(name= 'Like', y=df1.index.get_level_values(0), x = df1['product name_like'], orientation='h',marker=dict(color = 'gold')),
+             go.Bar(name= 'Dislike', y=df1.index.get_level_values(0), x = df1['product name_dislike'], orientation='h',marker=dict(color = 'deeppink'))
+         ])                              
+         fig.update_layout(barmode='group',
+                           title_text="Top 10 des couleurs les plus présentes",
+                           font = dict(size = 14),
+                           xaxis_title = "Nombre de votes",
+                           yaxis_title = "couleur ",
+                           plot_bgcolor='rgb(245,245,245)', #Pour modifier la couleur du background
+                           width=500,
+                           height=500)
+         st.plotly_chart(fig)
         
         ####Couleur par campaign_id : 
         vote = []

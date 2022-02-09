@@ -352,8 +352,8 @@ if page == "Graphique":
         fig.update_layout(width = 1100,
                           height = len(campaign_id)*8+450, #Adapte la hauteur de la figure en fonction du nombre de campaign_id
                           plot_bgcolor='rgb(245,245,245)', #Pour modifier la couleur du background
+                          xaxis=dict(side='top'),
                           font = dict(size = 14)) #Augmente la taille de la police
-        fig.xaxis.set_ticks_position('top')
         st.plotly_chart(fig) #Pour afficher le graphique
 
 ####################################################################CLUSTERS#####################################################################  

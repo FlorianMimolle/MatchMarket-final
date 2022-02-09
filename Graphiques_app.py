@@ -31,7 +31,7 @@ if page != "Accueil":
 
 ###################################################################ACCUEIL#####################################################################  
 if page == "Accueil":
-    col1,col2 = st.columns(2)
+    col1,col2 = st.columns([0.5,1])
     with col1:
         st.markdown("<h3 style='text-align: center;'> <img src='https://github.com/FlorianMimolle/MatchMarket-final/blob/master/Analyse.png?raw=true' alt='drawing' width='300'/></h3>", 
                     unsafe_allow_html=True)
@@ -43,7 +43,7 @@ if page == "Accueil":
         st.markdown("<p style='text-align: center;'>On peut filtrer à tout moment sur le type de campagne ou le campaign_id.<br>Les graphiques s'ajusteront alors automatiquement.</p>", unsafe_allow_html=True)
         st.markdown("<p style='text-align: center;'>En cochant 'Afficher les tableaux de données', la table globale et celle servant à la construction du graphique en cours s'affichent. Elles sont filtrées également.</p>", unsafe_allow_html=True)
         
-    col1,col2 = st.columns(2)
+    col1,col2 = st.columns([1,0.5])
     with col2:
         st.markdown("<h3 style='text-align: center;'> <img src='https://github.com/FlorianMimolle/MatchMarket-final/blob/master/Cluster.png?raw=true' alt='drawing' width='300'/></h3>", 
                     unsafe_allow_html=True)

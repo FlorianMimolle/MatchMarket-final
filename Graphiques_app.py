@@ -27,7 +27,7 @@ st.sidebar.image("https://github.com/FlorianMimolle/MatchMarket-final/blob/maste
 #Met les options cochables dans la sidebar pour afficher le tableau de donné ainsi que le menu soit graphique, soit cluster:
 page = st.sidebar.radio("Page",("Accueil","Graphique","Cluster"))
 if page != "Accueil":
-    table = st.sidebar.checkbox("Afficher le Tableau de données ")
+    table = st.sidebar.checkbox("Afficher les Tableaux de données ")
 
 ###################################################################ACCUEIL#####################################################################  
 if page == "Accueil":
@@ -38,9 +38,9 @@ if page == "Accueil":
     with col2:
         
         st.markdown("<h1 style='text-align: center;'>Graphique</h1>", unsafe_allow_html=True)
-        st.markdown("<p style='text-align: center;'>Cet onglet présente des graphiques analysants la base de données nettoyée avant machine learning.</p>", unsafe_allow_html=True)
+        st.markdown("<p style='text-align: center;'>Cet onglet présente des graphiques analysants la base de données nettoyée avant Machine Learning.</p>", unsafe_allow_html=True)
         st.markdown("<p style='text-align: center;'>Grâce au sélecteur on peut afficher :<br>- La carte de France<br>- La carte des Départements<br>- Une analyse des matières<br>- Une analyse des couleurs</p>", unsafe_allow_html=True)
-        st.markdown("<p style='text-align: center;'>On peut filtrer à tout moment sur le type de campagne ou le campaign_id, les graphiques s'ajusteront alors automatiquement.</p>", unsafe_allow_html=True)
+        st.markdown("<p style='text-align: center;'>On peut filtrer à tout moment sur le type de campagne ou le campaign_id.<br>Les graphiques s'ajusteront alors automatiquement.</p>", unsafe_allow_html=True)
         st.markdown("<p style='text-align: center;'>En cochant 'Afficher les tableaux de données', la table globale et celle servant à la construction du graphique en cours s'affichent. Elles sont filtrées également.</p>", unsafe_allow_html=True)
         
     col1,col2 = st.columns(2)
@@ -49,8 +49,10 @@ if page == "Accueil":
                     unsafe_allow_html=True)
     with col1:
         st.markdown("<h1 style='text-align: center;'>Cluster</h1>", unsafe_allow_html=True)
-        st.markdown("<p style='text-align: center;'>Cet onglet présente l'analyse des clusters optenus par machine learning.</p>", unsafe_allow_html=True)
+        st.markdown("<p style='text-align: center;'>Cet onglet présente l'analyse des clusters optenus par Machine Learning.</p>", unsafe_allow_html=True)
+        st.markdown("<p style='text-align: center;'>Le clustering est réalisée séparement pour chacun des 3 types de campagne (Mode, Décoration, Cosmétique).<br>Grâce au sélecteur, on peut les afficher un par un.r</p>", unsafe_allow_html=True)
         st.markdown("<p style='text-align: center;'>Vous pouvez sélectionner un ou plusieurs cluster pour les comparer</p>", unsafe_allow_html=True)
+        st.markdown("<p style='text-align: center;'>En bas de la page, vous avez la possibilité de créer vos propres graphiques pour aller encore plus loin !</p>", unsafe_allow_html=True)
 
 ###################################################################GRAPHIQUE#####################################################################  
 if page == "Graphique":

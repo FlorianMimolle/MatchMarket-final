@@ -98,15 +98,17 @@ if page == "Graphique":
             url = requests.get("https://github.com/FlorianMimolle/MatchMarket-final/blob/master/Sans_titre.png?raw=true")
         else: 
             url = requests.get("https://github.com/FlorianMimolle/MatchMarket-final/blob/master/black-dress-clipart.jpg?raw=true")
-    else:
-        url = requests.get("")#https://github.com/FlorianMimolle/MatchMarket-final/blob/master/black-dress-clipart.jpg?raw=true")
+    #else:
+        #url = requests.get(https://github.com/FlorianMimolle/MatchMarket-final/blob/master/black-dress-clipart.jpg?raw=true")
     
     def couleur(*args, **kwargs):
         import random
         return "rgb(250, 0, {})".format(random.randint(100, 255))
     
     img = Image.open(BytesIO(url.content))
-    mask = np.array(img)      
+    mask = np.array(img)  
+    if len(df_result["type_Campaign"].unique())!=1:
+        mask = ""
     stopwords = set(STOPWORDS) # créer la liste des stopwords
     stopwords.update(["à", "de", "en", "pièce", "2p"])
     text = " ".join(article for article in df_result['product name']) # transformer en liste la colonne 'product name'

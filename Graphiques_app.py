@@ -98,8 +98,8 @@ if page == "Graphique":
             url = requests.get("https://github.com/FlorianMimolle/MatchMarket-final/blob/master/Sans_titre.png?raw=true")
         else: 
             url = requests.get("https://github.com/FlorianMimolle/MatchMarket-final/blob/master/black-dress-clipart.jpg?raw=true")
-    #else:
-        #url = requests.get(https://github.com/FlorianMimolle/MatchMarket-final/blob/master/black-dress-clipart.jpg?raw=true")
+    else:
+        url = requests.get(https://github.com/FlorianMimolle/MatchMarket-final/blob/master/black-dress-clipart.jpg?raw=true")
     
     def couleur(*args, **kwargs):
         import random

@@ -31,7 +31,7 @@ if page != "Accueil":
 
 ###################################################################ACCUEIL#####################################################################  
 if page == "Accueil":
-    st.sidebar.image("https://github.com/FlorianMimolle/MatchMarket-final/blob/master/plus.png?raw=true")
+    #st.sidebar.image("https://github.com/FlorianMimolle/MatchMarket-final/blob/master/plus.png?raw=true")
     col1,col2 = st.columns(2)
     with col1:
         st.markdown("<h3 style='color:white;'>MATCHMARKET</h1>", unsafe_allow_html=True)
